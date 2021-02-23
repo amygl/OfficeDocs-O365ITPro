@@ -96,22 +96,26 @@ Do the following to unblock these files:
 
     `PS> Set-PlannerUserPolicy -UserAadIdOrPrincipalName amyg@contoso.onmicrosoft.com -BlockDeleteTasksNotCreatedBySelf $false`
 
-2. You'll be prompted to authenticate. Log in as yourself (the global admin), not the user you want to block.
+2. You'll be prompted to authenticate. Log in as yourself (the global admin), not the user you want to unblock.
 
 ## Get user's current policy
 
-Check a user's current policy with the Get-PlannerUserPolicy cmdlet.
+1. Check a user's current policy with the Get-PlannerUserPolicy cmdlet.
 
-`PS> Get-PlannerUserPolicy -UserAadIdOrPrincipalName <user's AADId or UPN>`
+    `PS> Get-PlannerUserPolicy -UserAadIdOrPrincipalName <user's AADId or UPN>`
 
-|Parameter|Description|
-|---|---|
-|-UserAadIdOrPrincipalName|Use either the Azure Active Directory ID or the UPN of the user for which you want to export content.|
-|-HostName|You only need to use this parameter if you access Planner though a host name other than *task.</span>office.</span>com*. For example, if you access Planner through *tasks.</span>office365.</span>us*, include *-HostName tasks.</span>office365</span>.us* in your command.|
+    |Parameter|Description|
+    |---|---|
+    |-UserAadIdOrPrincipalName|Use either the Azure Active Directory ID or the UPN of the user for which you want to export content.|
+    |-HostName|You only need to use this parameter if you access Planner though a host name other than *task.</span>office.</span>com*. For example, if you access Planner through *tasks.</span>office365.</span>us*, include *-HostName tasks.</span>office365</span>.us* in your command.|
 
-For example, the following will get a user's current policy
-`PS> Get-PlannerUserPolicy -UserAadIdOrPrincipalName amyg@contoso.onmicrosoft.com | fl
-@odata.context                   : https://tasks.office.com/taskApi/tenantAdminSettings/$metadata#UserPolicy/$entity
-id                               : amyg@contoso.onmicrosoft.com
-blockDeleteTasksNotCreatedBySelf : False`
+    For example, the following will get a user's current policy
+    
+    ```
+    PS> Get-PlannerUserPolicy -UserAadIdOrPrincipalName amyg@contoso.onmicrosoft.com | fl
+    @odata.context                   : https://tasks.office.com/taskApi/tenantAdminSettings/$metadata#UserPolicy/$entity
+    id                               : amyg@contoso.onmicrosoft.com
+    blockDeleteTasksNotCreatedBySelf : False
+    ```
 
+2. You'll be prompted to authenticate. Log in as yourself (the global admin).
